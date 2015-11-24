@@ -6,15 +6,19 @@ MAINTAINER Krzysztof Kardasz <krzysztof@kardasz.eu>
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN \
-    echo 'deb http://apt.newrelic.com/debian/ newrelic non-free' | sudo tee /etc/apt/sources.list.d/newrelic.list && \
-    wget -O- https://download.newrelic.com/548C16BF.gpg | sudo apt-key add -
-
-RUN \
     apt-get update && \
     apt-get -y upgrade && \
     apt-get -y dist-upgrade && \
+    apt-get -y install curl autoconf file g++ gcc libc-dev make pkg-config re2c wget ca-certificates
+
+RUN \
+    echo 'deb http://apt.newrelic.com/debian/ newrelic non-free' | tee /etc/apt/sources.list.d/newrelic.list && \
+    wget -O- https://download.newrelic.com/548C16BF.gpg | apt-key add -
+
+RUN \
+    apt-get update && \
     apt-get -y install \
-               curl autoconf file g++ gcc libc-dev make pkg-config re2c wget ca-certificates libpcre3 libpcre3-dev librecode0 libsqlite3-0 libxml2 memcached imagemagick \
+               libpcre3 libpcre3-dev librecode0 libsqlite3-0 libxml2 memcached imagemagick \
                php5 php5-cli php5-curl php5-dbg php5-dev php5-fpm php5-gd php5-imagick php5-intl php5-ldap \
                php5-mcrypt php5-memcached php5-mysql php-pear php5-redis php5-sqlite php5-xmlrpc php5-xsl newrelic-php5 && \
     apt-get clean autoclean && \
