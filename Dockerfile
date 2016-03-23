@@ -37,7 +37,7 @@ RUN \
     wget -O /usr/local/bin/apigen http://apigen.org/apigen.phar && chmod +x /usr/local/bin/apigen && \
     curl -sS https://getcomposer.org/installer | /usr/bin/php -- --install-dir=/usr/local/bin --filename=composer && \
     pecl install mongo && echo 'extension=mongo.so' > /etc/php5/mods-available/mongo.ini && \
-    pecl install oauth && echo 'extension=oauth.so' > /etc/php5/mods-available/oauth.ini && \
+    pecl install oauth-1.2.3 && echo 'extension=oauth.so' > /etc/php5/mods-available/oauth.ini && \
     wget -O /usr/local/bin/phpdoc http://phpdoc.org/phpDocumentor.phar && chmod +x /usr/local/bin/phpdoc && \
     wget -O /usr/local/bin/phpunit https://phar.phpunit.de/phpunit.phar && chmod +x /usr/local/bin/phpunit && \
     curl -LsS http://symfony.com/installer > /usr/local/bin/symfony && chmod a+x /usr/local/bin/symfony && \
