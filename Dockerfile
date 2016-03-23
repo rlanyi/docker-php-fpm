@@ -5,6 +5,14 @@ MAINTAINER Krzysztof Kardasz <krzysztof@kardasz.eu>
 # Update system and install required packages
 ENV DEBIAN_FRONTEND noninteractive
 
+# Use the default unprivileged account. This could be considered bad practice
+# on systems where multiple processes end up being executed by 'daemon' but
+# here we only ever run one process anyway.
+ENV PHP_USER            php-data
+ENV PHP_USER_UID        4545
+ENV PHP_GROUP           php-data
+ENV PHP_GROUP_GID       4545
+
 RUN \
     apt-get update && \
     apt-get -y upgrade && \
@@ -44,6 +52,12 @@ RUN \
 RUN ln -sf /dev/stderr /var/log/php5-fpm.log
 
 COPY etc/memcached.conf /etc/memcached.conf
+
+COPY docker-entrypoint.sh /entrypoint.sh
+
+RUN chmod a+x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
 
 EXPOSE 9000
 
