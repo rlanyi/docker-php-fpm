@@ -12,6 +12,7 @@ ENV PHP_USER            php-data
 ENV PHP_USER_UID        4545
 ENV PHP_GROUP           php-data
 ENV PHP_GROUP_GID       4545
+ENV XDEBUG_ENABLED      0
 
 RUN \
     apt-get update && \
