@@ -16,8 +16,6 @@ ENV XDEBUG_ENABLED      0
 
 RUN \
     apt-get update && \
-    apt-get -y upgrade && \
-    apt-get -y dist-upgrade && \
     apt-get -y install curl autoconf file g++ gcc libc-dev make pkg-config re2c wget ca-certificates
 
 RUN \
