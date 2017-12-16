@@ -1,6 +1,6 @@
-FROM debian:jessie
+FROM debian:wheezy
 
-MAINTAINER Krzysztof Kardasz <krzysztof@kardasz.eu>
+MAINTAINER Robert Lanyi <lanyi.robert.attila@gmail.com>
 
 # Update system and install required packages
 ENV DEBIAN_FRONTEND noninteractive
